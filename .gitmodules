@@ -1,0 +1,3 @@
+[submodule "freertos/lib/FreeRTOS-Sim"]
+	path = freertos/lib/FreeRTOS-Sim
+	url = https://github.com/megakilo/FreeRTOS-Sim
