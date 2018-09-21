@@ -1,0 +1,8 @@
+menu "TCP/IP Adapter"
+
+config TCPIP_LWIP
+    bool "LwIP"
+        help
+            lwIP is a small independent implementation of the TCP/IP protocol suite.
+
+endmenu

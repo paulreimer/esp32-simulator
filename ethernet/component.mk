@@ -1,0 +1,18 @@
+#
+# Component Makefile
+#
+
+COMPONENT_SRCDIRS := . eth_phy
+
+COMPONENT_LIBRARY :=
+COMPONENT_ADD_LDFLAGS :=
+COMPONENT_LDFLAGS :=
+
+COMPONENT_OWNBUILDTARGET := 1
+COMPONENT_OWNCLEANTARGET := 1
+
+.PHONY: build
+build:
+
+.PHONY: clean
+clean:
