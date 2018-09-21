@@ -1,0 +1,25 @@
+#!/bin/sh
+
+for arg do
+  shift
+  [ "$arg" = "-findirect-inlining" ] && continue
+  [ "$arg" = "-finline-small-functions" ] && continue
+  [ "$arg" = "-fno-test-coverage" ] && continue
+  [ "$arg" = "-fstrict-volatile-bitfields" ] && continue
+  [ "$arg" = "-mlongcalls" ] && continue
+  [ "$arg" = "-mtext-section-literals" ] && continue
+  [ "$arg" = "-nostdlib" ] && continue
+  [ "$arg" = "-Wl,-z,now" ] && continue
+  [ "$arg" = "-Wl,-z,relro" ] && continue
+  [ "$arg" = "-Wno-error=unused-but-set-variable" ] && continue
+  # Override shared linking flags for macOS
+  [ "$arg" = "-Wl,-shared" ] && set -- "$@" "-undefined dynamic_lookup" && continue
+  [ "$arg" = "-Wl,--gc-sections" ] && continue
+  [ "$arg" = "-Wl,--cref" ] && continue
+  [ "$arg" = "-Wl,--Map=makerlabs-acm-reader-lock.map" ] && continue
+  [ "$arg" = "-Wl,--start-group" ] && continue
+  [ "$arg" = "-Wl,--end-group" ] && continue
+  set -- "$@" "$arg"
+done
+
+exec clang++ $@

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+for arg do
+  shift
+  [ "$arg" = "--discard-all" ] && continue
+  [ "$arg" = "--discard-locals" ] && continue
+  [ "$arg" = "--remove-section=.comment" ] && continue
+  [ "$arg" = "--remove-section=.got" ] && continue
+  [ "$arg" = "--remove-section=.got.loc" ] && continue
+  [ "$arg" = "--remove-section=.interp" ] && continue
+  [ "$arg" = "--remove-section=.literal" ] && continue
+  [ "$arg" = "--remove-section=.strtab" ] && continue
+  [ "$arg" = "--remove-section=.symtab" ] && continue
+  [ "$arg" = "--remove-section=.xtensa.info" ] && continue
+  [ "$arg" = "--remove-section=.xt.lit" ] && continue
+  [ "$arg" = "--remove-section=.xt.prop" ] && continue
+  [ "$arg" = "--strip-debug" ] && continue
+  [ "$arg" = "--strip-unneeded" ] && continue
+  set -- "$@" "$arg"
+done
+
+exec strip $@
